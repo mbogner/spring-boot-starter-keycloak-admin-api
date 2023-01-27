@@ -10,6 +10,27 @@ The API specification is based on https://github.com/mbogner/keycloak-openapi wh
 of https://github.com/ccouzens/keycloak-openapi. Some calls were commented out to make swagger editor happy and
 openapi-generator able to create the client code from the spec.
 
+## Integration
+
+### Maven
+
+You can use this library by getting it via public maven repository.
+
+```xml
+
+<dependency>
+    <groupId>dev.mbo</groupId>
+    <artifactId>spring-boot-starter-keycloak-admin-api</artifactId>
+    <version><!-- latest-version --></version>
+</dependency>
+```
+
+### Gradle
+
+```kotlin
+import("dev.mbo:spring-boot-starter-keycloak-admin-api:<latest-version>")
+```
+
 ## Configuration
 
 Here a sample configuration with placeholders that you can use in your applications.yml:
@@ -87,24 +108,3 @@ gpg --keyring secring.gpg --export-secret-keys > ~/.gnupg/secring.gpg
 ```
 
 hint: using `~/.gnupg/secring.gpg` in the gradle.properties doesn't work. replace ~ with the full path.
-
-## Usage
-
-### Maven
-
-You can use this library by getting it via public maven repository.
-
-```xml
-
-<dependency>
-    <groupId>dev.mbo</groupId>
-    <artifactId>spring-boot-starter-keycloak-admin-api</artifactId>
-    <version><!-- latest-version --></version>
-</dependency>
-```
-
-### Gradle
-
-```kotlin
-import("dev.mbo:spring-boot-starter-keycloak-admin-api:<latest-version>")
-```
