@@ -28,7 +28,7 @@ You can use this library by getting it via public maven repository.
 ### Gradle
 
 ```kotlin
-import("dev.mbo:spring-boot-starter-keycloak-admin-api:<latest-version>")
+implementation("dev.mbo:spring-boot-starter-keycloak-admin-api:<latest-version>")
 ```
 
 ## Configuration
