@@ -2,6 +2,8 @@ plugins {
     // https://plugins.gradle.org/plugin/io.spring.dependency-management
     id("io.spring.dependency-management") version "1.1.0"
     id("java-library")
+    id("signing")
+    id("maven-publish")
 }
 
 group = "dev.mbo"
@@ -62,5 +64,77 @@ sourceSets {
         java {
             srcDirs("src/main/java", "src/main/javaGen")
         }
+    }
+}
+
+// ----------------------------------------------------------------
+// Publication
+// ----------------------------------------------------------------
+
+publishing {
+    repositories {
+
+        maven {
+            val releasesRepoUrl = "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/"
+            val snapshotsRepoUrl = "https://s01.oss.sonatype.org/content/repositories/snapshots"
+            url = uri(if(version.toString().endsWith("SNAPSHOT")) snapshotsRepoUrl else releasesRepoUrl)
+            credentials {
+                username = project.properties["ossrhUsername"] as String? ?: "Unknown user"
+                password = project.properties["ossrhPassword"] as String? ?: "Unknown user"
+            }
+        }
+
+    }
+
+    publications {
+        create<MavenPublication>("maven") {
+            groupId = "dev.mbo"
+            artifactId = "spring-boot-starter-keycloak-admin-api"
+            version = version.toString()
+
+            from(components["java"])
+
+            pom {
+                name.set("spring-boot-starter-keycloak-admin-api")
+                description.set("Keycloak Admin API client for Spring Boot 3")
+                url.set("https://github.com/mbogner/spring-boot-starter-keycloak-admin-api")
+                licenses {
+                    license {
+                        name.set("The Apache License, Version 2.0")
+                        url.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
+                    }
+                }
+                developers {
+                    developer {
+                        id.set("mbo")
+                        name.set("Manuel Bogner")
+                        email.set("outrage_breath.0t@icloud.com")
+                        organization.set("mbo.dev")
+                        organizationUrl.set("https://mbo.dev")
+                        timezone.set("Europe/Vienna")
+                        roles.set(setOf("architect", "developer"))
+                    }
+                }
+                organization {
+                    name.set("mbo.dev")
+                    url.set("https://mbo.dev")
+                }
+                scm {
+                    connection.set("git@github.com:mbogner/spring-boot-starter-keycloak-admin-api.git")
+                    developerConnection.set("git@github.com:mbogner/spring-boot-starter-keycloak-admin-api.git")
+                    url.set("https://github.com/mbogner/spring-boot-starter-keycloak-admin-api")
+                }
+            }
+        }
+    }
+}
+
+signing {
+    sign(publishing.publications["maven"])
+}
+
+tasks.javadoc {
+    if (JavaVersion.current().isJava9Compatible) {
+        (options as StandardJavadocDocletOptions).addBooleanOption("html5", true)
     }
 }
