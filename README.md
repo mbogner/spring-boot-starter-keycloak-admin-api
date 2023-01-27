@@ -87,3 +87,24 @@ gpg --keyring secring.gpg --export-secret-keys > ~/.gnupg/secring.gpg
 ```
 
 hint: using `~/.gnupg/secring.gpg` in the gradle.properties doesn't work. replace ~ with the full path.
+
+## Usage
+
+### Maven
+
+You can use this library by getting it via public maven repository.
+
+```xml
+
+<dependency>
+    <groupId>dev.mbo</groupId>
+    <artifactId>spring-boot-starter-keycloak-admin-api</artifactId>
+    <version><!-- latest-version --></version>
+</dependency>
+```
+
+### Gradle
+
+```kotlin
+import("dev.mbo:spring-boot-starter-keycloak-admin-api:<latest-version>")
+```
