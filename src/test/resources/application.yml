@@ -1,0 +1,23 @@
+dev.mbo.keycloak:
+  basePath: https://kc.coffeebeans.at
+  admin:
+    api:
+      basePath: ${dev.mbo.keycloak.basePath}/admin/realms
+
+logging:
+  level:
+    root: INFO
+    dev.mbo: TRACE
+
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          keycloak:
+            client-id: shop-admin
+            client-secret: mkPyoHoLgU9IYYGkK9rOlS4OihCWMHqC
+            authorization-grant-type: client_credentials
+        provider:
+          keycloak:
+            token-uri: ${dev.mbo.keycloak.basePath}/realms/WhitelabelShopBackend/protocol/openid-connect/token

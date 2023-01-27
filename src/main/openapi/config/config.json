@@ -1,0 +1,13 @@
+{
+  "hideGenerationTimestamp": "true",
+  "useBeanValidation": "true",
+  "delegatePattern": "true",
+  "useTags": "true",
+  "exceptionHandler": "false",
+  "gradleBuildFile": "true",
+  "reactive": "false",
+  "serviceInterface": "true",
+  "sortModelPropertiesByRequiredFlag": "true",
+  "sortParamsByRequiredFlag": "true",
+  "swaggerAnnotations": "true"
+}
