@@ -7,7 +7,6 @@ plugins {
 }
 
 group = "dev.mbo"
-version = "1.0-SNAPSHOT"
 
 dependencies {
     api("org.springframework.boot:spring-boot-starter-webflux")
@@ -75,9 +74,12 @@ publishing {
     repositories {
 
         maven {
-            val releasesRepoUrl = "https://s01.oss.sonatype.org/content/repositories/releases"
+            //val releasesRepoUrl = "https://s01.oss.sonatype.org/content/repositories/releases"
+            val releasesRepoUrl = "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/"
             val snapshotsRepoUrl = "https://s01.oss.sonatype.org/content/repositories/snapshots"
-            url = uri(if(version.toString().endsWith("SNAPSHOT")) snapshotsRepoUrl else releasesRepoUrl)
+            val deployTo = uri(if (version.toString().endsWith("SNAPSHOT")) snapshotsRepoUrl else releasesRepoUrl)
+            url = deployTo
+            println("deploying $version to $deployTo")
             credentials {
                 username = project.properties["ossrhUsername"] as String? ?: "Unknown user"
                 password = project.properties["ossrhPassword"] as String? ?: "Unknown user"
