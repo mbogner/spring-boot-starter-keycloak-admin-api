@@ -344,6 +344,103 @@ public class RolesApi {
         return realmClientsIdRolesRoleNameCompositesClientsClientUuidGetRequestCreation(realm, id, roleName, clientUuid);
     }
     /**
+     * Remove roles from the role’s composite
+     * 
+     * <p><b>2XX</b> - success
+     * @param realm realm name (not id!)
+     * @param id id of client (not client-id)
+     * @param roleName role’s name (not id!)
+     * @param roleRepresentationDto roles to remove
+     * @throws WebClientResponseException if an error occurs while attempting to invoke the API
+     */
+    private ResponseSpec realmClientsIdRolesRoleNameCompositesDeleteRequestCreation(String realm, String id, String roleName, List<RoleRepresentationDto> roleRepresentationDto) throws WebClientResponseException {
+        Object postBody = roleRepresentationDto;
+        // verify the required parameter 'realm' is set
+        if (realm == null) {
+            throw new WebClientResponseException("Missing the required parameter 'realm' when calling realmClientsIdRolesRoleNameCompositesDelete", HttpStatus.BAD_REQUEST.value(), HttpStatus.BAD_REQUEST.getReasonPhrase(), null, null, null);
+        }
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new WebClientResponseException("Missing the required parameter 'id' when calling realmClientsIdRolesRoleNameCompositesDelete", HttpStatus.BAD_REQUEST.value(), HttpStatus.BAD_REQUEST.getReasonPhrase(), null, null, null);
+        }
+        // verify the required parameter 'roleName' is set
+        if (roleName == null) {
+            throw new WebClientResponseException("Missing the required parameter 'roleName' when calling realmClientsIdRolesRoleNameCompositesDelete", HttpStatus.BAD_REQUEST.value(), HttpStatus.BAD_REQUEST.getReasonPhrase(), null, null, null);
+        }
+        // verify the required parameter 'roleRepresentationDto' is set
+        if (roleRepresentationDto == null) {
+            throw new WebClientResponseException("Missing the required parameter 'roleRepresentationDto' when calling realmClientsIdRolesRoleNameCompositesDelete", HttpStatus.BAD_REQUEST.value(), HttpStatus.BAD_REQUEST.getReasonPhrase(), null, null, null);
+        }
+        // create path and map variables
+        final Map<String, Object> pathParams = new HashMap<String, Object>();
+
+        pathParams.put("realm", realm);
+        pathParams.put("id", id);
+        pathParams.put("role-name", roleName);
+
+        final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
+        final HttpHeaders headerParams = new HttpHeaders();
+        final MultiValueMap<String, String> cookieParams = new LinkedMultiValueMap<String, String>();
+        final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
+
+        final String[] localVarAccepts = { };
+        final List<MediaType> localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String[] localVarContentTypes = { 
+            "application/json"
+        };
+        final MediaType localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] { "access_token" };
+
+        ParameterizedTypeReference<Void> localVarReturnType = new ParameterizedTypeReference<Void>() {};
+        return apiClient.invokeAPI("/{realm}/clients/{id}/roles/{role-name}/composites", HttpMethod.DELETE, pathParams, queryParams, postBody, headerParams, cookieParams, formParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    }
+
+    /**
+     * Remove roles from the role’s composite
+     * 
+     * <p><b>2XX</b> - success
+     * @param realm realm name (not id!)
+     * @param id id of client (not client-id)
+     * @param roleName role’s name (not id!)
+     * @param roleRepresentationDto roles to remove
+     * @throws WebClientResponseException if an error occurs while attempting to invoke the API
+     */
+    public Mono<Void> realmClientsIdRolesRoleNameCompositesDelete(String realm, String id, String roleName, List<RoleRepresentationDto> roleRepresentationDto) throws WebClientResponseException {
+        ParameterizedTypeReference<Void> localVarReturnType = new ParameterizedTypeReference<Void>() {};
+        return realmClientsIdRolesRoleNameCompositesDeleteRequestCreation(realm, id, roleName, roleRepresentationDto).bodyToMono(localVarReturnType);
+    }
+
+    /**
+     * Remove roles from the role’s composite
+     * 
+     * <p><b>2XX</b> - success
+     * @param realm realm name (not id!)
+     * @param id id of client (not client-id)
+     * @param roleName role’s name (not id!)
+     * @param roleRepresentationDto roles to remove
+     * @throws WebClientResponseException if an error occurs while attempting to invoke the API
+     */
+    public Mono<ResponseEntity<Void>> realmClientsIdRolesRoleNameCompositesDeleteWithHttpInfo(String realm, String id, String roleName, List<RoleRepresentationDto> roleRepresentationDto) throws WebClientResponseException {
+        ParameterizedTypeReference<Void> localVarReturnType = new ParameterizedTypeReference<Void>() {};
+        return realmClientsIdRolesRoleNameCompositesDeleteRequestCreation(realm, id, roleName, roleRepresentationDto).toEntity(localVarReturnType);
+    }
+
+    /**
+     * Remove roles from the role’s composite
+     * 
+     * <p><b>2XX</b> - success
+     * @param realm realm name (not id!)
+     * @param id id of client (not client-id)
+     * @param roleName role’s name (not id!)
+     * @param roleRepresentationDto roles to remove
+     * @return ResponseSpec
+     * @throws WebClientResponseException if an error occurs while attempting to invoke the API
+     */
+    public ResponseSpec realmClientsIdRolesRoleNameCompositesDeleteWithResponseSpec(String realm, String id, String roleName, List<RoleRepresentationDto> roleRepresentationDto) throws WebClientResponseException {
+        return realmClientsIdRolesRoleNameCompositesDeleteRequestCreation(realm, id, roleName, roleRepresentationDto);
+    }
+    /**
      * Get composites of the role
      * 
      * <p><b>2XX</b> - success
@@ -1570,6 +1667,94 @@ public class RolesApi {
      */
     public ResponseSpec realmRolesRoleNameCompositesClientsClientUuidGetWithResponseSpec(String realm, String roleName, String clientUuid) throws WebClientResponseException {
         return realmRolesRoleNameCompositesClientsClientUuidGetRequestCreation(realm, roleName, clientUuid);
+    }
+    /**
+     * Remove roles from the role’s composite
+     * 
+     * <p><b>2XX</b> - success
+     * @param realm realm name (not id!)
+     * @param roleName role’s name (not id!)
+     * @param roleRepresentationDto roles to remove
+     * @throws WebClientResponseException if an error occurs while attempting to invoke the API
+     */
+    private ResponseSpec realmRolesRoleNameCompositesDeleteRequestCreation(String realm, String roleName, List<RoleRepresentationDto> roleRepresentationDto) throws WebClientResponseException {
+        Object postBody = roleRepresentationDto;
+        // verify the required parameter 'realm' is set
+        if (realm == null) {
+            throw new WebClientResponseException("Missing the required parameter 'realm' when calling realmRolesRoleNameCompositesDelete", HttpStatus.BAD_REQUEST.value(), HttpStatus.BAD_REQUEST.getReasonPhrase(), null, null, null);
+        }
+        // verify the required parameter 'roleName' is set
+        if (roleName == null) {
+            throw new WebClientResponseException("Missing the required parameter 'roleName' when calling realmRolesRoleNameCompositesDelete", HttpStatus.BAD_REQUEST.value(), HttpStatus.BAD_REQUEST.getReasonPhrase(), null, null, null);
+        }
+        // verify the required parameter 'roleRepresentationDto' is set
+        if (roleRepresentationDto == null) {
+            throw new WebClientResponseException("Missing the required parameter 'roleRepresentationDto' when calling realmRolesRoleNameCompositesDelete", HttpStatus.BAD_REQUEST.value(), HttpStatus.BAD_REQUEST.getReasonPhrase(), null, null, null);
+        }
+        // create path and map variables
+        final Map<String, Object> pathParams = new HashMap<String, Object>();
+
+        pathParams.put("realm", realm);
+        pathParams.put("role-name", roleName);
+
+        final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
+        final HttpHeaders headerParams = new HttpHeaders();
+        final MultiValueMap<String, String> cookieParams = new LinkedMultiValueMap<String, String>();
+        final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
+
+        final String[] localVarAccepts = { };
+        final List<MediaType> localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String[] localVarContentTypes = { 
+            "application/json"
+        };
+        final MediaType localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] { "access_token" };
+
+        ParameterizedTypeReference<Void> localVarReturnType = new ParameterizedTypeReference<Void>() {};
+        return apiClient.invokeAPI("/{realm}/roles/{role-name}/composites", HttpMethod.DELETE, pathParams, queryParams, postBody, headerParams, cookieParams, formParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    }
+
+    /**
+     * Remove roles from the role’s composite
+     * 
+     * <p><b>2XX</b> - success
+     * @param realm realm name (not id!)
+     * @param roleName role’s name (not id!)
+     * @param roleRepresentationDto roles to remove
+     * @throws WebClientResponseException if an error occurs while attempting to invoke the API
+     */
+    public Mono<Void> realmRolesRoleNameCompositesDelete(String realm, String roleName, List<RoleRepresentationDto> roleRepresentationDto) throws WebClientResponseException {
+        ParameterizedTypeReference<Void> localVarReturnType = new ParameterizedTypeReference<Void>() {};
+        return realmRolesRoleNameCompositesDeleteRequestCreation(realm, roleName, roleRepresentationDto).bodyToMono(localVarReturnType);
+    }
+
+    /**
+     * Remove roles from the role’s composite
+     * 
+     * <p><b>2XX</b> - success
+     * @param realm realm name (not id!)
+     * @param roleName role’s name (not id!)
+     * @param roleRepresentationDto roles to remove
+     * @throws WebClientResponseException if an error occurs while attempting to invoke the API
+     */
+    public Mono<ResponseEntity<Void>> realmRolesRoleNameCompositesDeleteWithHttpInfo(String realm, String roleName, List<RoleRepresentationDto> roleRepresentationDto) throws WebClientResponseException {
+        ParameterizedTypeReference<Void> localVarReturnType = new ParameterizedTypeReference<Void>() {};
+        return realmRolesRoleNameCompositesDeleteRequestCreation(realm, roleName, roleRepresentationDto).toEntity(localVarReturnType);
+    }
+
+    /**
+     * Remove roles from the role’s composite
+     * 
+     * <p><b>2XX</b> - success
+     * @param realm realm name (not id!)
+     * @param roleName role’s name (not id!)
+     * @param roleRepresentationDto roles to remove
+     * @return ResponseSpec
+     * @throws WebClientResponseException if an error occurs while attempting to invoke the API
+     */
+    public ResponseSpec realmRolesRoleNameCompositesDeleteWithResponseSpec(String realm, String roleName, List<RoleRepresentationDto> roleRepresentationDto) throws WebClientResponseException {
+        return realmRolesRoleNameCompositesDeleteRequestCreation(realm, roleName, roleRepresentationDto);
     }
     /**
      * Get composites of the role

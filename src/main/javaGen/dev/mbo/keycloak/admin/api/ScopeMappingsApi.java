@@ -240,6 +240,103 @@ public class ScopeMappingsApi {
         return realmClientScopesIdScopeMappingsClientsClientCompositeGetRequestCreation(realm, id, client, briefRepresentation);
     }
     /**
+     * Remove client-level roles from the client’s scope.
+     * 
+     * <p><b>2XX</b> - success
+     * @param realm realm name (not id!)
+     * @param id id of client scope (not name)
+     * @param client The client parameter
+     * @param roleRepresentationDto The roleRepresentationDto parameter
+     * @throws WebClientResponseException if an error occurs while attempting to invoke the API
+     */
+    private ResponseSpec realmClientScopesIdScopeMappingsClientsClientDeleteRequestCreation(String realm, String id, String client, List<RoleRepresentationDto> roleRepresentationDto) throws WebClientResponseException {
+        Object postBody = roleRepresentationDto;
+        // verify the required parameter 'realm' is set
+        if (realm == null) {
+            throw new WebClientResponseException("Missing the required parameter 'realm' when calling realmClientScopesIdScopeMappingsClientsClientDelete", HttpStatus.BAD_REQUEST.value(), HttpStatus.BAD_REQUEST.getReasonPhrase(), null, null, null);
+        }
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new WebClientResponseException("Missing the required parameter 'id' when calling realmClientScopesIdScopeMappingsClientsClientDelete", HttpStatus.BAD_REQUEST.value(), HttpStatus.BAD_REQUEST.getReasonPhrase(), null, null, null);
+        }
+        // verify the required parameter 'client' is set
+        if (client == null) {
+            throw new WebClientResponseException("Missing the required parameter 'client' when calling realmClientScopesIdScopeMappingsClientsClientDelete", HttpStatus.BAD_REQUEST.value(), HttpStatus.BAD_REQUEST.getReasonPhrase(), null, null, null);
+        }
+        // verify the required parameter 'roleRepresentationDto' is set
+        if (roleRepresentationDto == null) {
+            throw new WebClientResponseException("Missing the required parameter 'roleRepresentationDto' when calling realmClientScopesIdScopeMappingsClientsClientDelete", HttpStatus.BAD_REQUEST.value(), HttpStatus.BAD_REQUEST.getReasonPhrase(), null, null, null);
+        }
+        // create path and map variables
+        final Map<String, Object> pathParams = new HashMap<String, Object>();
+
+        pathParams.put("realm", realm);
+        pathParams.put("id", id);
+        pathParams.put("client", client);
+
+        final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
+        final HttpHeaders headerParams = new HttpHeaders();
+        final MultiValueMap<String, String> cookieParams = new LinkedMultiValueMap<String, String>();
+        final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
+
+        final String[] localVarAccepts = { };
+        final List<MediaType> localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String[] localVarContentTypes = { 
+            "application/json"
+        };
+        final MediaType localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] { "access_token" };
+
+        ParameterizedTypeReference<Void> localVarReturnType = new ParameterizedTypeReference<Void>() {};
+        return apiClient.invokeAPI("/{realm}/client-scopes/{id}/scope-mappings/clients/{client}", HttpMethod.DELETE, pathParams, queryParams, postBody, headerParams, cookieParams, formParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    }
+
+    /**
+     * Remove client-level roles from the client’s scope.
+     * 
+     * <p><b>2XX</b> - success
+     * @param realm realm name (not id!)
+     * @param id id of client scope (not name)
+     * @param client The client parameter
+     * @param roleRepresentationDto The roleRepresentationDto parameter
+     * @throws WebClientResponseException if an error occurs while attempting to invoke the API
+     */
+    public Mono<Void> realmClientScopesIdScopeMappingsClientsClientDelete(String realm, String id, String client, List<RoleRepresentationDto> roleRepresentationDto) throws WebClientResponseException {
+        ParameterizedTypeReference<Void> localVarReturnType = new ParameterizedTypeReference<Void>() {};
+        return realmClientScopesIdScopeMappingsClientsClientDeleteRequestCreation(realm, id, client, roleRepresentationDto).bodyToMono(localVarReturnType);
+    }
+
+    /**
+     * Remove client-level roles from the client’s scope.
+     * 
+     * <p><b>2XX</b> - success
+     * @param realm realm name (not id!)
+     * @param id id of client scope (not name)
+     * @param client The client parameter
+     * @param roleRepresentationDto The roleRepresentationDto parameter
+     * @throws WebClientResponseException if an error occurs while attempting to invoke the API
+     */
+    public Mono<ResponseEntity<Void>> realmClientScopesIdScopeMappingsClientsClientDeleteWithHttpInfo(String realm, String id, String client, List<RoleRepresentationDto> roleRepresentationDto) throws WebClientResponseException {
+        ParameterizedTypeReference<Void> localVarReturnType = new ParameterizedTypeReference<Void>() {};
+        return realmClientScopesIdScopeMappingsClientsClientDeleteRequestCreation(realm, id, client, roleRepresentationDto).toEntity(localVarReturnType);
+    }
+
+    /**
+     * Remove client-level roles from the client’s scope.
+     * 
+     * <p><b>2XX</b> - success
+     * @param realm realm name (not id!)
+     * @param id id of client scope (not name)
+     * @param client The client parameter
+     * @param roleRepresentationDto The roleRepresentationDto parameter
+     * @return ResponseSpec
+     * @throws WebClientResponseException if an error occurs while attempting to invoke the API
+     */
+    public ResponseSpec realmClientScopesIdScopeMappingsClientsClientDeleteWithResponseSpec(String realm, String id, String client, List<RoleRepresentationDto> roleRepresentationDto) throws WebClientResponseException {
+        return realmClientScopesIdScopeMappingsClientsClientDeleteRequestCreation(realm, id, client, roleRepresentationDto);
+    }
+    /**
      * Get the roles associated with a client’s scope   Returns roles for the client.
      * 
      * <p><b>2XX</b> - success
@@ -599,6 +696,94 @@ public class ScopeMappingsApi {
      */
     public ResponseSpec realmClientScopesIdScopeMappingsRealmCompositeGetWithResponseSpec(String realm, String id, Boolean briefRepresentation) throws WebClientResponseException {
         return realmClientScopesIdScopeMappingsRealmCompositeGetRequestCreation(realm, id, briefRepresentation);
+    }
+    /**
+     * Remove a set of realm-level roles from the client’s scope
+     * 
+     * <p><b>2XX</b> - success
+     * @param realm realm name (not id!)
+     * @param id id of client scope (not name)
+     * @param roleRepresentationDto The roleRepresentationDto parameter
+     * @throws WebClientResponseException if an error occurs while attempting to invoke the API
+     */
+    private ResponseSpec realmClientScopesIdScopeMappingsRealmDeleteRequestCreation(String realm, String id, List<RoleRepresentationDto> roleRepresentationDto) throws WebClientResponseException {
+        Object postBody = roleRepresentationDto;
+        // verify the required parameter 'realm' is set
+        if (realm == null) {
+            throw new WebClientResponseException("Missing the required parameter 'realm' when calling realmClientScopesIdScopeMappingsRealmDelete", HttpStatus.BAD_REQUEST.value(), HttpStatus.BAD_REQUEST.getReasonPhrase(), null, null, null);
+        }
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new WebClientResponseException("Missing the required parameter 'id' when calling realmClientScopesIdScopeMappingsRealmDelete", HttpStatus.BAD_REQUEST.value(), HttpStatus.BAD_REQUEST.getReasonPhrase(), null, null, null);
+        }
+        // verify the required parameter 'roleRepresentationDto' is set
+        if (roleRepresentationDto == null) {
+            throw new WebClientResponseException("Missing the required parameter 'roleRepresentationDto' when calling realmClientScopesIdScopeMappingsRealmDelete", HttpStatus.BAD_REQUEST.value(), HttpStatus.BAD_REQUEST.getReasonPhrase(), null, null, null);
+        }
+        // create path and map variables
+        final Map<String, Object> pathParams = new HashMap<String, Object>();
+
+        pathParams.put("realm", realm);
+        pathParams.put("id", id);
+
+        final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
+        final HttpHeaders headerParams = new HttpHeaders();
+        final MultiValueMap<String, String> cookieParams = new LinkedMultiValueMap<String, String>();
+        final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
+
+        final String[] localVarAccepts = { };
+        final List<MediaType> localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String[] localVarContentTypes = { 
+            "application/json"
+        };
+        final MediaType localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] { "access_token" };
+
+        ParameterizedTypeReference<Void> localVarReturnType = new ParameterizedTypeReference<Void>() {};
+        return apiClient.invokeAPI("/{realm}/client-scopes/{id}/scope-mappings/realm", HttpMethod.DELETE, pathParams, queryParams, postBody, headerParams, cookieParams, formParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    }
+
+    /**
+     * Remove a set of realm-level roles from the client’s scope
+     * 
+     * <p><b>2XX</b> - success
+     * @param realm realm name (not id!)
+     * @param id id of client scope (not name)
+     * @param roleRepresentationDto The roleRepresentationDto parameter
+     * @throws WebClientResponseException if an error occurs while attempting to invoke the API
+     */
+    public Mono<Void> realmClientScopesIdScopeMappingsRealmDelete(String realm, String id, List<RoleRepresentationDto> roleRepresentationDto) throws WebClientResponseException {
+        ParameterizedTypeReference<Void> localVarReturnType = new ParameterizedTypeReference<Void>() {};
+        return realmClientScopesIdScopeMappingsRealmDeleteRequestCreation(realm, id, roleRepresentationDto).bodyToMono(localVarReturnType);
+    }
+
+    /**
+     * Remove a set of realm-level roles from the client’s scope
+     * 
+     * <p><b>2XX</b> - success
+     * @param realm realm name (not id!)
+     * @param id id of client scope (not name)
+     * @param roleRepresentationDto The roleRepresentationDto parameter
+     * @throws WebClientResponseException if an error occurs while attempting to invoke the API
+     */
+    public Mono<ResponseEntity<Void>> realmClientScopesIdScopeMappingsRealmDeleteWithHttpInfo(String realm, String id, List<RoleRepresentationDto> roleRepresentationDto) throws WebClientResponseException {
+        ParameterizedTypeReference<Void> localVarReturnType = new ParameterizedTypeReference<Void>() {};
+        return realmClientScopesIdScopeMappingsRealmDeleteRequestCreation(realm, id, roleRepresentationDto).toEntity(localVarReturnType);
+    }
+
+    /**
+     * Remove a set of realm-level roles from the client’s scope
+     * 
+     * <p><b>2XX</b> - success
+     * @param realm realm name (not id!)
+     * @param id id of client scope (not name)
+     * @param roleRepresentationDto The roleRepresentationDto parameter
+     * @return ResponseSpec
+     * @throws WebClientResponseException if an error occurs while attempting to invoke the API
+     */
+    public ResponseSpec realmClientScopesIdScopeMappingsRealmDeleteWithResponseSpec(String realm, String id, List<RoleRepresentationDto> roleRepresentationDto) throws WebClientResponseException {
+        return realmClientScopesIdScopeMappingsRealmDeleteRequestCreation(realm, id, roleRepresentationDto);
     }
     /**
      * Get realm-level roles associated with the client’s scope
@@ -962,6 +1147,103 @@ public class ScopeMappingsApi {
         return realmClientsIdScopeMappingsClientsClientCompositeGetRequestCreation(realm, id, client, briefRepresentation);
     }
     /**
+     * Remove client-level roles from the client’s scope.
+     * 
+     * <p><b>2XX</b> - success
+     * @param realm realm name (not id!)
+     * @param id id of client (not client-id)
+     * @param client The client parameter
+     * @param roleRepresentationDto The roleRepresentationDto parameter
+     * @throws WebClientResponseException if an error occurs while attempting to invoke the API
+     */
+    private ResponseSpec realmClientsIdScopeMappingsClientsClientDeleteRequestCreation(String realm, String id, String client, List<RoleRepresentationDto> roleRepresentationDto) throws WebClientResponseException {
+        Object postBody = roleRepresentationDto;
+        // verify the required parameter 'realm' is set
+        if (realm == null) {
+            throw new WebClientResponseException("Missing the required parameter 'realm' when calling realmClientsIdScopeMappingsClientsClientDelete", HttpStatus.BAD_REQUEST.value(), HttpStatus.BAD_REQUEST.getReasonPhrase(), null, null, null);
+        }
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new WebClientResponseException("Missing the required parameter 'id' when calling realmClientsIdScopeMappingsClientsClientDelete", HttpStatus.BAD_REQUEST.value(), HttpStatus.BAD_REQUEST.getReasonPhrase(), null, null, null);
+        }
+        // verify the required parameter 'client' is set
+        if (client == null) {
+            throw new WebClientResponseException("Missing the required parameter 'client' when calling realmClientsIdScopeMappingsClientsClientDelete", HttpStatus.BAD_REQUEST.value(), HttpStatus.BAD_REQUEST.getReasonPhrase(), null, null, null);
+        }
+        // verify the required parameter 'roleRepresentationDto' is set
+        if (roleRepresentationDto == null) {
+            throw new WebClientResponseException("Missing the required parameter 'roleRepresentationDto' when calling realmClientsIdScopeMappingsClientsClientDelete", HttpStatus.BAD_REQUEST.value(), HttpStatus.BAD_REQUEST.getReasonPhrase(), null, null, null);
+        }
+        // create path and map variables
+        final Map<String, Object> pathParams = new HashMap<String, Object>();
+
+        pathParams.put("realm", realm);
+        pathParams.put("id", id);
+        pathParams.put("client", client);
+
+        final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
+        final HttpHeaders headerParams = new HttpHeaders();
+        final MultiValueMap<String, String> cookieParams = new LinkedMultiValueMap<String, String>();
+        final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
+
+        final String[] localVarAccepts = { };
+        final List<MediaType> localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String[] localVarContentTypes = { 
+            "application/json"
+        };
+        final MediaType localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] { "access_token" };
+
+        ParameterizedTypeReference<Void> localVarReturnType = new ParameterizedTypeReference<Void>() {};
+        return apiClient.invokeAPI("/{realm}/clients/{id}/scope-mappings/clients/{client}", HttpMethod.DELETE, pathParams, queryParams, postBody, headerParams, cookieParams, formParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    }
+
+    /**
+     * Remove client-level roles from the client’s scope.
+     * 
+     * <p><b>2XX</b> - success
+     * @param realm realm name (not id!)
+     * @param id id of client (not client-id)
+     * @param client The client parameter
+     * @param roleRepresentationDto The roleRepresentationDto parameter
+     * @throws WebClientResponseException if an error occurs while attempting to invoke the API
+     */
+    public Mono<Void> realmClientsIdScopeMappingsClientsClientDelete(String realm, String id, String client, List<RoleRepresentationDto> roleRepresentationDto) throws WebClientResponseException {
+        ParameterizedTypeReference<Void> localVarReturnType = new ParameterizedTypeReference<Void>() {};
+        return realmClientsIdScopeMappingsClientsClientDeleteRequestCreation(realm, id, client, roleRepresentationDto).bodyToMono(localVarReturnType);
+    }
+
+    /**
+     * Remove client-level roles from the client’s scope.
+     * 
+     * <p><b>2XX</b> - success
+     * @param realm realm name (not id!)
+     * @param id id of client (not client-id)
+     * @param client The client parameter
+     * @param roleRepresentationDto The roleRepresentationDto parameter
+     * @throws WebClientResponseException if an error occurs while attempting to invoke the API
+     */
+    public Mono<ResponseEntity<Void>> realmClientsIdScopeMappingsClientsClientDeleteWithHttpInfo(String realm, String id, String client, List<RoleRepresentationDto> roleRepresentationDto) throws WebClientResponseException {
+        ParameterizedTypeReference<Void> localVarReturnType = new ParameterizedTypeReference<Void>() {};
+        return realmClientsIdScopeMappingsClientsClientDeleteRequestCreation(realm, id, client, roleRepresentationDto).toEntity(localVarReturnType);
+    }
+
+    /**
+     * Remove client-level roles from the client’s scope.
+     * 
+     * <p><b>2XX</b> - success
+     * @param realm realm name (not id!)
+     * @param id id of client (not client-id)
+     * @param client The client parameter
+     * @param roleRepresentationDto The roleRepresentationDto parameter
+     * @return ResponseSpec
+     * @throws WebClientResponseException if an error occurs while attempting to invoke the API
+     */
+    public ResponseSpec realmClientsIdScopeMappingsClientsClientDeleteWithResponseSpec(String realm, String id, String client, List<RoleRepresentationDto> roleRepresentationDto) throws WebClientResponseException {
+        return realmClientsIdScopeMappingsClientsClientDeleteRequestCreation(realm, id, client, roleRepresentationDto);
+    }
+    /**
      * Get the roles associated with a client’s scope   Returns roles for the client.
      * 
      * <p><b>2XX</b> - success
@@ -1321,6 +1603,94 @@ public class ScopeMappingsApi {
      */
     public ResponseSpec realmClientsIdScopeMappingsRealmCompositeGetWithResponseSpec(String realm, String id, Boolean briefRepresentation) throws WebClientResponseException {
         return realmClientsIdScopeMappingsRealmCompositeGetRequestCreation(realm, id, briefRepresentation);
+    }
+    /**
+     * Remove a set of realm-level roles from the client’s scope
+     * 
+     * <p><b>2XX</b> - success
+     * @param realm realm name (not id!)
+     * @param id id of client (not client-id)
+     * @param roleRepresentationDto The roleRepresentationDto parameter
+     * @throws WebClientResponseException if an error occurs while attempting to invoke the API
+     */
+    private ResponseSpec realmClientsIdScopeMappingsRealmDeleteRequestCreation(String realm, String id, List<RoleRepresentationDto> roleRepresentationDto) throws WebClientResponseException {
+        Object postBody = roleRepresentationDto;
+        // verify the required parameter 'realm' is set
+        if (realm == null) {
+            throw new WebClientResponseException("Missing the required parameter 'realm' when calling realmClientsIdScopeMappingsRealmDelete", HttpStatus.BAD_REQUEST.value(), HttpStatus.BAD_REQUEST.getReasonPhrase(), null, null, null);
+        }
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new WebClientResponseException("Missing the required parameter 'id' when calling realmClientsIdScopeMappingsRealmDelete", HttpStatus.BAD_REQUEST.value(), HttpStatus.BAD_REQUEST.getReasonPhrase(), null, null, null);
+        }
+        // verify the required parameter 'roleRepresentationDto' is set
+        if (roleRepresentationDto == null) {
+            throw new WebClientResponseException("Missing the required parameter 'roleRepresentationDto' when calling realmClientsIdScopeMappingsRealmDelete", HttpStatus.BAD_REQUEST.value(), HttpStatus.BAD_REQUEST.getReasonPhrase(), null, null, null);
+        }
+        // create path and map variables
+        final Map<String, Object> pathParams = new HashMap<String, Object>();
+
+        pathParams.put("realm", realm);
+        pathParams.put("id", id);
+
+        final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
+        final HttpHeaders headerParams = new HttpHeaders();
+        final MultiValueMap<String, String> cookieParams = new LinkedMultiValueMap<String, String>();
+        final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
+
+        final String[] localVarAccepts = { };
+        final List<MediaType> localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String[] localVarContentTypes = { 
+            "application/json"
+        };
+        final MediaType localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] { "access_token" };
+
+        ParameterizedTypeReference<Void> localVarReturnType = new ParameterizedTypeReference<Void>() {};
+        return apiClient.invokeAPI("/{realm}/clients/{id}/scope-mappings/realm", HttpMethod.DELETE, pathParams, queryParams, postBody, headerParams, cookieParams, formParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    }
+
+    /**
+     * Remove a set of realm-level roles from the client’s scope
+     * 
+     * <p><b>2XX</b> - success
+     * @param realm realm name (not id!)
+     * @param id id of client (not client-id)
+     * @param roleRepresentationDto The roleRepresentationDto parameter
+     * @throws WebClientResponseException if an error occurs while attempting to invoke the API
+     */
+    public Mono<Void> realmClientsIdScopeMappingsRealmDelete(String realm, String id, List<RoleRepresentationDto> roleRepresentationDto) throws WebClientResponseException {
+        ParameterizedTypeReference<Void> localVarReturnType = new ParameterizedTypeReference<Void>() {};
+        return realmClientsIdScopeMappingsRealmDeleteRequestCreation(realm, id, roleRepresentationDto).bodyToMono(localVarReturnType);
+    }
+
+    /**
+     * Remove a set of realm-level roles from the client’s scope
+     * 
+     * <p><b>2XX</b> - success
+     * @param realm realm name (not id!)
+     * @param id id of client (not client-id)
+     * @param roleRepresentationDto The roleRepresentationDto parameter
+     * @throws WebClientResponseException if an error occurs while attempting to invoke the API
+     */
+    public Mono<ResponseEntity<Void>> realmClientsIdScopeMappingsRealmDeleteWithHttpInfo(String realm, String id, List<RoleRepresentationDto> roleRepresentationDto) throws WebClientResponseException {
+        ParameterizedTypeReference<Void> localVarReturnType = new ParameterizedTypeReference<Void>() {};
+        return realmClientsIdScopeMappingsRealmDeleteRequestCreation(realm, id, roleRepresentationDto).toEntity(localVarReturnType);
+    }
+
+    /**
+     * Remove a set of realm-level roles from the client’s scope
+     * 
+     * <p><b>2XX</b> - success
+     * @param realm realm name (not id!)
+     * @param id id of client (not client-id)
+     * @param roleRepresentationDto The roleRepresentationDto parameter
+     * @return ResponseSpec
+     * @throws WebClientResponseException if an error occurs while attempting to invoke the API
+     */
+    public ResponseSpec realmClientsIdScopeMappingsRealmDeleteWithResponseSpec(String realm, String id, List<RoleRepresentationDto> roleRepresentationDto) throws WebClientResponseException {
+        return realmClientsIdScopeMappingsRealmDeleteRequestCreation(realm, id, roleRepresentationDto);
     }
     /**
      * Get realm-level roles associated with the client’s scope

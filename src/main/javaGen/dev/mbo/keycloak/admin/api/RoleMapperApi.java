@@ -306,6 +306,94 @@ public class RoleMapperApi {
         return realmGroupsIdRoleMappingsRealmCompositeGetRequestCreation(realm, id, briefRepresentation);
     }
     /**
+     * Delete realm-level role mappings
+     * 
+     * <p><b>2XX</b> - success
+     * @param realm realm name (not id!)
+     * @param id The id parameter
+     * @param roleRepresentationDto The roleRepresentationDto parameter
+     * @throws WebClientResponseException if an error occurs while attempting to invoke the API
+     */
+    private ResponseSpec realmGroupsIdRoleMappingsRealmDeleteRequestCreation(String realm, String id, List<RoleRepresentationDto> roleRepresentationDto) throws WebClientResponseException {
+        Object postBody = roleRepresentationDto;
+        // verify the required parameter 'realm' is set
+        if (realm == null) {
+            throw new WebClientResponseException("Missing the required parameter 'realm' when calling realmGroupsIdRoleMappingsRealmDelete", HttpStatus.BAD_REQUEST.value(), HttpStatus.BAD_REQUEST.getReasonPhrase(), null, null, null);
+        }
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new WebClientResponseException("Missing the required parameter 'id' when calling realmGroupsIdRoleMappingsRealmDelete", HttpStatus.BAD_REQUEST.value(), HttpStatus.BAD_REQUEST.getReasonPhrase(), null, null, null);
+        }
+        // verify the required parameter 'roleRepresentationDto' is set
+        if (roleRepresentationDto == null) {
+            throw new WebClientResponseException("Missing the required parameter 'roleRepresentationDto' when calling realmGroupsIdRoleMappingsRealmDelete", HttpStatus.BAD_REQUEST.value(), HttpStatus.BAD_REQUEST.getReasonPhrase(), null, null, null);
+        }
+        // create path and map variables
+        final Map<String, Object> pathParams = new HashMap<String, Object>();
+
+        pathParams.put("realm", realm);
+        pathParams.put("id", id);
+
+        final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
+        final HttpHeaders headerParams = new HttpHeaders();
+        final MultiValueMap<String, String> cookieParams = new LinkedMultiValueMap<String, String>();
+        final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
+
+        final String[] localVarAccepts = { };
+        final List<MediaType> localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String[] localVarContentTypes = { 
+            "application/json"
+        };
+        final MediaType localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] { "access_token" };
+
+        ParameterizedTypeReference<Void> localVarReturnType = new ParameterizedTypeReference<Void>() {};
+        return apiClient.invokeAPI("/{realm}/groups/{id}/role-mappings/realm", HttpMethod.DELETE, pathParams, queryParams, postBody, headerParams, cookieParams, formParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    }
+
+    /**
+     * Delete realm-level role mappings
+     * 
+     * <p><b>2XX</b> - success
+     * @param realm realm name (not id!)
+     * @param id The id parameter
+     * @param roleRepresentationDto The roleRepresentationDto parameter
+     * @throws WebClientResponseException if an error occurs while attempting to invoke the API
+     */
+    public Mono<Void> realmGroupsIdRoleMappingsRealmDelete(String realm, String id, List<RoleRepresentationDto> roleRepresentationDto) throws WebClientResponseException {
+        ParameterizedTypeReference<Void> localVarReturnType = new ParameterizedTypeReference<Void>() {};
+        return realmGroupsIdRoleMappingsRealmDeleteRequestCreation(realm, id, roleRepresentationDto).bodyToMono(localVarReturnType);
+    }
+
+    /**
+     * Delete realm-level role mappings
+     * 
+     * <p><b>2XX</b> - success
+     * @param realm realm name (not id!)
+     * @param id The id parameter
+     * @param roleRepresentationDto The roleRepresentationDto parameter
+     * @throws WebClientResponseException if an error occurs while attempting to invoke the API
+     */
+    public Mono<ResponseEntity<Void>> realmGroupsIdRoleMappingsRealmDeleteWithHttpInfo(String realm, String id, List<RoleRepresentationDto> roleRepresentationDto) throws WebClientResponseException {
+        ParameterizedTypeReference<Void> localVarReturnType = new ParameterizedTypeReference<Void>() {};
+        return realmGroupsIdRoleMappingsRealmDeleteRequestCreation(realm, id, roleRepresentationDto).toEntity(localVarReturnType);
+    }
+
+    /**
+     * Delete realm-level role mappings
+     * 
+     * <p><b>2XX</b> - success
+     * @param realm realm name (not id!)
+     * @param id The id parameter
+     * @param roleRepresentationDto The roleRepresentationDto parameter
+     * @return ResponseSpec
+     * @throws WebClientResponseException if an error occurs while attempting to invoke the API
+     */
+    public ResponseSpec realmGroupsIdRoleMappingsRealmDeleteWithResponseSpec(String realm, String id, List<RoleRepresentationDto> roleRepresentationDto) throws WebClientResponseException {
+        return realmGroupsIdRoleMappingsRealmDeleteRequestCreation(realm, id, roleRepresentationDto);
+    }
+    /**
      * Get realm-level role mappings
      * 
      * <p><b>2XX</b> - success
@@ -730,6 +818,94 @@ public class RoleMapperApi {
      */
     public ResponseSpec realmUsersIdRoleMappingsRealmCompositeGetWithResponseSpec(String realm, String id, Boolean briefRepresentation) throws WebClientResponseException {
         return realmUsersIdRoleMappingsRealmCompositeGetRequestCreation(realm, id, briefRepresentation);
+    }
+    /**
+     * Delete realm-level role mappings
+     * 
+     * <p><b>2XX</b> - success
+     * @param realm realm name (not id!)
+     * @param id User id
+     * @param roleRepresentationDto The roleRepresentationDto parameter
+     * @throws WebClientResponseException if an error occurs while attempting to invoke the API
+     */
+    private ResponseSpec realmUsersIdRoleMappingsRealmDeleteRequestCreation(String realm, String id, List<RoleRepresentationDto> roleRepresentationDto) throws WebClientResponseException {
+        Object postBody = roleRepresentationDto;
+        // verify the required parameter 'realm' is set
+        if (realm == null) {
+            throw new WebClientResponseException("Missing the required parameter 'realm' when calling realmUsersIdRoleMappingsRealmDelete", HttpStatus.BAD_REQUEST.value(), HttpStatus.BAD_REQUEST.getReasonPhrase(), null, null, null);
+        }
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new WebClientResponseException("Missing the required parameter 'id' when calling realmUsersIdRoleMappingsRealmDelete", HttpStatus.BAD_REQUEST.value(), HttpStatus.BAD_REQUEST.getReasonPhrase(), null, null, null);
+        }
+        // verify the required parameter 'roleRepresentationDto' is set
+        if (roleRepresentationDto == null) {
+            throw new WebClientResponseException("Missing the required parameter 'roleRepresentationDto' when calling realmUsersIdRoleMappingsRealmDelete", HttpStatus.BAD_REQUEST.value(), HttpStatus.BAD_REQUEST.getReasonPhrase(), null, null, null);
+        }
+        // create path and map variables
+        final Map<String, Object> pathParams = new HashMap<String, Object>();
+
+        pathParams.put("realm", realm);
+        pathParams.put("id", id);
+
+        final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
+        final HttpHeaders headerParams = new HttpHeaders();
+        final MultiValueMap<String, String> cookieParams = new LinkedMultiValueMap<String, String>();
+        final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
+
+        final String[] localVarAccepts = { };
+        final List<MediaType> localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String[] localVarContentTypes = { 
+            "application/json"
+        };
+        final MediaType localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] { "access_token" };
+
+        ParameterizedTypeReference<Void> localVarReturnType = new ParameterizedTypeReference<Void>() {};
+        return apiClient.invokeAPI("/{realm}/users/{id}/role-mappings/realm", HttpMethod.DELETE, pathParams, queryParams, postBody, headerParams, cookieParams, formParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    }
+
+    /**
+     * Delete realm-level role mappings
+     * 
+     * <p><b>2XX</b> - success
+     * @param realm realm name (not id!)
+     * @param id User id
+     * @param roleRepresentationDto The roleRepresentationDto parameter
+     * @throws WebClientResponseException if an error occurs while attempting to invoke the API
+     */
+    public Mono<Void> realmUsersIdRoleMappingsRealmDelete(String realm, String id, List<RoleRepresentationDto> roleRepresentationDto) throws WebClientResponseException {
+        ParameterizedTypeReference<Void> localVarReturnType = new ParameterizedTypeReference<Void>() {};
+        return realmUsersIdRoleMappingsRealmDeleteRequestCreation(realm, id, roleRepresentationDto).bodyToMono(localVarReturnType);
+    }
+
+    /**
+     * Delete realm-level role mappings
+     * 
+     * <p><b>2XX</b> - success
+     * @param realm realm name (not id!)
+     * @param id User id
+     * @param roleRepresentationDto The roleRepresentationDto parameter
+     * @throws WebClientResponseException if an error occurs while attempting to invoke the API
+     */
+    public Mono<ResponseEntity<Void>> realmUsersIdRoleMappingsRealmDeleteWithHttpInfo(String realm, String id, List<RoleRepresentationDto> roleRepresentationDto) throws WebClientResponseException {
+        ParameterizedTypeReference<Void> localVarReturnType = new ParameterizedTypeReference<Void>() {};
+        return realmUsersIdRoleMappingsRealmDeleteRequestCreation(realm, id, roleRepresentationDto).toEntity(localVarReturnType);
+    }
+
+    /**
+     * Delete realm-level role mappings
+     * 
+     * <p><b>2XX</b> - success
+     * @param realm realm name (not id!)
+     * @param id User id
+     * @param roleRepresentationDto The roleRepresentationDto parameter
+     * @return ResponseSpec
+     * @throws WebClientResponseException if an error occurs while attempting to invoke the API
+     */
+    public ResponseSpec realmUsersIdRoleMappingsRealmDeleteWithResponseSpec(String realm, String id, List<RoleRepresentationDto> roleRepresentationDto) throws WebClientResponseException {
+        return realmUsersIdRoleMappingsRealmDeleteRequestCreation(realm, id, roleRepresentationDto);
     }
     /**
      * Get realm-level role mappings

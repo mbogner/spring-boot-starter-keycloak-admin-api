@@ -16,19 +16,22 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ServerInfoRepresentation'
-    # post:
-    #   tags:
-    #     - Realms Admin
-    #   summary: Import a realm.
-    #   requestBody:
-    #     content:
-    #       application/json:
-    #         schema:
-    #           $ref: '#/components/schemas/InputStream'
-    #     required: true
-    #   responses:
-    #     2XX:
-    #       description: success
+    post:
+      tags:
+        - Realms Admin
+      summary: Import a realm.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: object
+                additionalProperties: true
+        required: true
+      responses:
+        2XX:
+          description: success
   /{realm}:
     get:
       tags:
@@ -1300,21 +1303,21 @@ paths:
       responses:
         2XX:
           description: success
-    # delete:
-    #   tags:
-    #     - Scope Mappings
-    #   summary: Remove client-level roles from the client’s scope.
-    #   requestBody:
-    #     content:
-    #       application/json:
-    #         schema:
-    #           type: array
-    #           items:
-    #             $ref: '#/components/schemas/RoleRepresentation'
-    #     required: true
-    #   responses:
-    #     2XX:
-    #       description: success
+    delete:
+      tags:
+        - Scope Mappings
+      summary: Remove client-level roles from the client’s scope.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/RoleRepresentation'
+        required: true
+      responses:
+        2XX:
+          description: success
     parameters:
       - in: path
         name: realm
@@ -1445,21 +1448,21 @@ paths:
       responses:
         2XX:
           description: success
-    # delete:
-    #   tags:
-    #     - Scope Mappings
-    #   summary: Remove a set of realm-level roles from the client’s scope
-    #   requestBody:
-    #     content:
-    #       application/json:
-    #         schema:
-    #           type: array
-    #           items:
-    #             $ref: '#/components/schemas/RoleRepresentation'
-    #     required: true
-    #   responses:
-    #     2XX:
-    #       description: success
+    delete:
+      tags:
+        - Scope Mappings
+      summary: Remove a set of realm-level roles from the client’s scope
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/RoleRepresentation'
+        required: true
+      responses:
+        2XX:
+          description: success
     parameters:
       - in: path
         name: realm
@@ -2967,22 +2970,22 @@ paths:
       responses:
         2XX:
           description: success
-    # delete:
-    #   tags:
-    #     - Roles
-    #   summary: Remove roles from the role’s composite
-    #   requestBody:
-    #     description: roles to remove
-    #     content:
-    #       application/json:
-    #         schema:
-    #           type: array
-    #           items:
-    #             $ref: '#/components/schemas/RoleRepresentation'
-    #     required: true
-    #   responses:
-    #     2XX:
-    #       description: success
+    delete:
+      tags:
+        - Roles
+      summary: Remove roles from the role’s composite
+      requestBody:
+        description: roles to remove
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/RoleRepresentation'
+        required: true
+      responses:
+        2XX:
+          description: success
     parameters:
       - in: path
         name: realm
@@ -3275,21 +3278,21 @@ paths:
       responses:
         2XX:
           description: success
-    # delete:
-    #   tags:
-    #     - Scope Mappings
-    #   summary: Remove client-level roles from the client’s scope.
-    #   requestBody:
-    #     content:
-    #       application/json:
-    #         schema:
-    #           type: array
-    #           items:
-    #             $ref: '#/components/schemas/RoleRepresentation'
-    #     required: true
-    #   responses:
-    #     2XX:
-    #       description: success
+    delete:
+      tags:
+        - Scope Mappings
+      summary: Remove client-level roles from the client’s scope.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/RoleRepresentation'
+        required: true
+      responses:
+        2XX:
+          description: success
     parameters:
       - in: path
         name: realm
@@ -3420,21 +3423,21 @@ paths:
       responses:
         2XX:
           description: success
-    # delete:
-    #   tags:
-    #     - Scope Mappings
-    #   summary: Remove a set of realm-level roles from the client’s scope
-    #   requestBody:
-    #     content:
-    #       application/json:
-    #         schema:
-    #           type: array
-    #           items:
-    #             $ref: '#/components/schemas/RoleRepresentation'
-    #     required: true
-    #   responses:
-    #     2XX:
-    #       description: success
+    delete:
+      tags:
+        - Scope Mappings
+      summary: Remove a set of realm-level roles from the client’s scope
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/RoleRepresentation'
+        required: true
+      responses:
+        2XX:
+          description: success
     parameters:
       - in: path
         name: realm
@@ -4410,21 +4413,21 @@ paths:
       responses:
         2XX:
           description: success
-    # delete:
-    #   tags:
-    #     - Client Role Mappings
-    #   summary: Delete client-level roles from user role mapping
-    #   requestBody:
-    #     content:
-    #       application/json:
-    #         schema:
-    #           type: array
-    #           items:
-    #             $ref: '#/components/schemas/RoleRepresentation'
-    #     required: true
-    #   responses:
-    #     2XX:
-    #       description: success
+    delete:
+      tags:
+        - Client Role Mappings
+      summary: Delete client-level roles from user role mapping
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/RoleRepresentation'
+        required: true
+      responses:
+        2XX:
+          description: success
     parameters:
       - in: path
         name: realm
@@ -4553,21 +4556,21 @@ paths:
       responses:
         2XX:
           description: success
-    # delete:
-    #   tags:
-    #     - Role Mapper
-    #   summary: Delete realm-level role mappings
-    #   requestBody:
-    #     content:
-    #       application/json:
-    #         schema:
-    #           type: array
-    #           items:
-    #             $ref: '#/components/schemas/RoleRepresentation'
-    #     required: true
-    #   responses:
-    #     2XX:
-    #       description: success
+    delete:
+      tags:
+        - Role Mapper
+      summary: Delete realm-level role mappings
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/RoleRepresentation'
+        required: true
+      responses:
+        2XX:
+          description: success
     parameters:
       - in: path
         name: realm
@@ -5343,22 +5346,22 @@ paths:
       responses:
         2XX:
           description: success
-    # delete:
-    #   tags:
-    #     - Roles (by ID)
-    #   summary: Remove a set of roles from the role’s composite
-    #   requestBody:
-    #     description: A set of roles to be removed
-    #     content:
-    #       application/json:
-    #         schema:
-    #           type: array
-    #           items:
-    #             $ref: '#/components/schemas/RoleRepresentation'
-    #     required: true
-    #   responses:
-    #     2XX:
-    #       description: success
+    delete:
+      tags:
+        - Roles (by ID)
+      summary: Remove a set of roles from the role’s composite
+      requestBody:
+        description: A set of roles to be removed
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/RoleRepresentation'
+        required: true
+      responses:
+        2XX:
+          description: success
     parameters:
       - in: path
         name: realm
@@ -5558,22 +5561,22 @@ paths:
       responses:
         2XX:
           description: success
-    # delete:
-    #   tags:
-    #     - Roles
-    #   summary: Remove roles from the role’s composite
-    #   requestBody:
-    #     description: roles to remove
-    #     content:
-    #       application/json:
-    #         schema:
-    #           type: array
-    #           items:
-    #             $ref: '#/components/schemas/RoleRepresentation'
-    #     required: true
-    #   responses:
-    #     2XX:
-    #       description: success
+    delete:
+      tags:
+        - Roles
+      summary: Remove roles from the role’s composite
+      requestBody:
+        description: roles to remove
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/RoleRepresentation'
+        required: true
+      responses:
+        2XX:
+          description: success
     parameters:
       - in: path
         name: realm
@@ -6836,21 +6839,21 @@ paths:
       responses:
         2XX:
           description: success
-    # delete:
-    #   tags:
-    #     - Client Role Mappings
-    #   summary: Delete client-level roles from user role mapping
-    #   requestBody:
-    #     content:
-    #       application/json:
-    #         schema:
-    #           type: array
-    #           items:
-    #             $ref: '#/components/schemas/RoleRepresentation'
-    #     required: true
-    #   responses:
-    #     2XX:
-    #       description: success
+    delete:
+      tags:
+        - Client Role Mappings
+      summary: Delete client-level roles from user role mapping
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/RoleRepresentation'
+        required: true
+      responses:
+        2XX:
+          description: success
     parameters:
       - in: path
         name: realm
@@ -6982,21 +6985,21 @@ paths:
       responses:
         2XX:
           description: success
-    # delete:
-    #   tags:
-    #     - Role Mapper
-    #   summary: Delete realm-level role mappings
-    #   requestBody:
-    #     content:
-    #       application/json:
-    #         schema:
-    #           type: array
-    #           items:
-    #             $ref: '#/components/schemas/RoleRepresentation'
-    #     required: true
-    #   responses:
-    #     2XX:
-    #       description: success
+    delete:
+      tags:
+        - Role Mapper
+      summary: Delete realm-level role mappings
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/RoleRepresentation'
+        required: true
+      responses:
+        2XX:
+          description: success
     parameters:
       - in: path
         name: realm
@@ -7150,6 +7153,7 @@ components:
     access_token:
       type: http
       scheme: bearer
+      bearerFormat: null
   schemas:
     AccessToken:
       type: object

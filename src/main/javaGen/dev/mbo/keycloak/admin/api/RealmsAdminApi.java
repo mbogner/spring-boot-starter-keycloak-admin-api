@@ -3354,4 +3354,73 @@ public class RealmsAdminApi {
     public ResponseSpec realmUsersManagementPermissionsPutWithResponseSpec(String realm, ManagementPermissionReferenceDto managementPermissionReferenceDto) throws WebClientResponseException {
         return realmUsersManagementPermissionsPutRequestCreation(realm, managementPermissionReferenceDto);
     }
+    /**
+     * Import a realm.
+     * 
+     * <p><b>2XX</b> - success
+     * @param requestBody The requestBody parameter
+     * @throws WebClientResponseException if an error occurs while attempting to invoke the API
+     */
+    private ResponseSpec rootPostRequestCreation(List<Map<String, Object>> requestBody) throws WebClientResponseException {
+        Object postBody = requestBody;
+        // verify the required parameter 'requestBody' is set
+        if (requestBody == null) {
+            throw new WebClientResponseException("Missing the required parameter 'requestBody' when calling rootPost", HttpStatus.BAD_REQUEST.value(), HttpStatus.BAD_REQUEST.getReasonPhrase(), null, null, null);
+        }
+        // create path and map variables
+        final Map<String, Object> pathParams = new HashMap<String, Object>();
+
+        final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
+        final HttpHeaders headerParams = new HttpHeaders();
+        final MultiValueMap<String, String> cookieParams = new LinkedMultiValueMap<String, String>();
+        final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
+
+        final String[] localVarAccepts = { };
+        final List<MediaType> localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String[] localVarContentTypes = { 
+            "application/json"
+        };
+        final MediaType localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] { "access_token" };
+
+        ParameterizedTypeReference<Void> localVarReturnType = new ParameterizedTypeReference<Void>() {};
+        return apiClient.invokeAPI("/", HttpMethod.POST, pathParams, queryParams, postBody, headerParams, cookieParams, formParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    }
+
+    /**
+     * Import a realm.
+     * 
+     * <p><b>2XX</b> - success
+     * @param requestBody The requestBody parameter
+     * @throws WebClientResponseException if an error occurs while attempting to invoke the API
+     */
+    public Mono<Void> rootPost(List<Map<String, Object>> requestBody) throws WebClientResponseException {
+        ParameterizedTypeReference<Void> localVarReturnType = new ParameterizedTypeReference<Void>() {};
+        return rootPostRequestCreation(requestBody).bodyToMono(localVarReturnType);
+    }
+
+    /**
+     * Import a realm.
+     * 
+     * <p><b>2XX</b> - success
+     * @param requestBody The requestBody parameter
+     * @throws WebClientResponseException if an error occurs while attempting to invoke the API
+     */
+    public Mono<ResponseEntity<Void>> rootPostWithHttpInfo(List<Map<String, Object>> requestBody) throws WebClientResponseException {
+        ParameterizedTypeReference<Void> localVarReturnType = new ParameterizedTypeReference<Void>() {};
+        return rootPostRequestCreation(requestBody).toEntity(localVarReturnType);
+    }
+
+    /**
+     * Import a realm.
+     * 
+     * <p><b>2XX</b> - success
+     * @param requestBody The requestBody parameter
+     * @return ResponseSpec
+     * @throws WebClientResponseException if an error occurs while attempting to invoke the API
+     */
+    public ResponseSpec rootPostWithResponseSpec(List<Map<String, Object>> requestBody) throws WebClientResponseException {
+        return rootPostRequestCreation(requestBody);
+    }
 }
