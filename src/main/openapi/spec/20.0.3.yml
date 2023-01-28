@@ -7579,8 +7579,6 @@ components:
         notBefore:
           type: integer
           format: int32
-        oauth2DeviceAuthorizationGrantEnabled:
-          type: boolean
         optionalClientScopes:
           type: array
           items:

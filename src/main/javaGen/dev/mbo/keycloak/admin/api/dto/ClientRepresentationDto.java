@@ -58,7 +58,6 @@ import jakarta.validation.Valid;
   ClientRepresentationDto.JSON_PROPERTY_NAME,
   ClientRepresentationDto.JSON_PROPERTY_NODE_RE_REGISTRATION_TIMEOUT,
   ClientRepresentationDto.JSON_PROPERTY_NOT_BEFORE,
-  ClientRepresentationDto.JSON_PROPERTY_OAUTH2_DEVICE_AUTHORIZATION_GRANT_ENABLED,
   ClientRepresentationDto.JSON_PROPERTY_OPTIONAL_CLIENT_SCOPES,
   ClientRepresentationDto.JSON_PROPERTY_ORIGIN,
   ClientRepresentationDto.JSON_PROPERTY_PROTOCOL,
@@ -145,9 +144,6 @@ public class ClientRepresentationDto {
 
   public static final String JSON_PROPERTY_NOT_BEFORE = "notBefore";
   private Integer notBefore;
-
-  public static final String JSON_PROPERTY_OAUTH2_DEVICE_AUTHORIZATION_GRANT_ENABLED = "oauth2DeviceAuthorizationGrantEnabled";
-  private Boolean oauth2DeviceAuthorizationGrantEnabled;
 
   public static final String JSON_PROPERTY_OPTIONAL_CLIENT_SCOPES = "optionalClientScopes";
   private List<String> optionalClientScopes = null;
@@ -848,33 +844,6 @@ public class ClientRepresentationDto {
   }
 
 
-  public ClientRepresentationDto oauth2DeviceAuthorizationGrantEnabled(Boolean oauth2DeviceAuthorizationGrantEnabled) {
-    
-    this.oauth2DeviceAuthorizationGrantEnabled = oauth2DeviceAuthorizationGrantEnabled;
-    return this;
-  }
-
-   /**
-   * Get oauth2DeviceAuthorizationGrantEnabled
-   * @return oauth2DeviceAuthorizationGrantEnabled
-  **/
-  @jakarta.annotation.Nullable
-
-  @JsonProperty(JSON_PROPERTY_OAUTH2_DEVICE_AUTHORIZATION_GRANT_ENABLED)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public Boolean getOauth2DeviceAuthorizationGrantEnabled() {
-    return oauth2DeviceAuthorizationGrantEnabled;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_OAUTH2_DEVICE_AUTHORIZATION_GRANT_ENABLED)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setOauth2DeviceAuthorizationGrantEnabled(Boolean oauth2DeviceAuthorizationGrantEnabled) {
-    this.oauth2DeviceAuthorizationGrantEnabled = oauth2DeviceAuthorizationGrantEnabled;
-  }
-
-
   public ClientRepresentationDto optionalClientScopes(List<String> optionalClientScopes) {
     
     this.optionalClientScopes = optionalClientScopes;
@@ -1326,7 +1295,6 @@ public class ClientRepresentationDto {
         Objects.equals(this.name, clientRepresentation.name) &&
         Objects.equals(this.nodeReRegistrationTimeout, clientRepresentation.nodeReRegistrationTimeout) &&
         Objects.equals(this.notBefore, clientRepresentation.notBefore) &&
-        Objects.equals(this.oauth2DeviceAuthorizationGrantEnabled, clientRepresentation.oauth2DeviceAuthorizationGrantEnabled) &&
         Objects.equals(this.optionalClientScopes, clientRepresentation.optionalClientScopes) &&
         Objects.equals(this.origin, clientRepresentation.origin) &&
         Objects.equals(this.protocol, clientRepresentation.protocol) &&
@@ -1345,7 +1313,7 @@ public class ClientRepresentationDto {
 
   @Override
   public int hashCode() {
-    return Objects.hash(access, adminUrl, alwaysDisplayInConsole, attributes, authenticationFlowBindingOverrides, authorizationServicesEnabled, authorizationSettings, baseUrl, bearerOnly, clientAuthenticatorType, clientId, consentRequired, defaultClientScopes, description, directAccessGrantsEnabled, enabled, frontchannelLogout, fullScopeAllowed, id, implicitFlowEnabled, name, nodeReRegistrationTimeout, notBefore, oauth2DeviceAuthorizationGrantEnabled, optionalClientScopes, origin, protocol, protocolMappers, publicClient, redirectUris, registeredNodes, registrationAccessToken, rootUrl, secret, serviceAccountsEnabled, standardFlowEnabled, surrogateAuthRequired, webOrigins);
+    return Objects.hash(access, adminUrl, alwaysDisplayInConsole, attributes, authenticationFlowBindingOverrides, authorizationServicesEnabled, authorizationSettings, baseUrl, bearerOnly, clientAuthenticatorType, clientId, consentRequired, defaultClientScopes, description, directAccessGrantsEnabled, enabled, frontchannelLogout, fullScopeAllowed, id, implicitFlowEnabled, name, nodeReRegistrationTimeout, notBefore, optionalClientScopes, origin, protocol, protocolMappers, publicClient, redirectUris, registeredNodes, registrationAccessToken, rootUrl, secret, serviceAccountsEnabled, standardFlowEnabled, surrogateAuthRequired, webOrigins);
   }
 
   @Override
@@ -1375,7 +1343,6 @@ public class ClientRepresentationDto {
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    nodeReRegistrationTimeout: ").append(toIndentedString(nodeReRegistrationTimeout)).append("\n");
     sb.append("    notBefore: ").append(toIndentedString(notBefore)).append("\n");
-    sb.append("    oauth2DeviceAuthorizationGrantEnabled: ").append(toIndentedString(oauth2DeviceAuthorizationGrantEnabled)).append("\n");
     sb.append("    optionalClientScopes: ").append(toIndentedString(optionalClientScopes)).append("\n");
     sb.append("    origin: ").append(toIndentedString(origin)).append("\n");
     sb.append("    protocol: ").append(toIndentedString(protocol)).append("\n");
